@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<DataSources>
+  <DataSource>
+    <DataSourceName>Provider=Mondrian;DataSource=Jira;</DataSourceName>
+    <DataSourceDescription>JIRA Worklog</DataSourceDescription>
+    <URL>http://10.0.0.4:8888/mondrian/xmla</URL>
+    <DataSourceInfo>Provider=mondrian;Jdbc=jdbc:postgresql://postgres:5432/jira;JdbcUser=jira_user;JdbcPassword=secret;JdbcDrivers=org.postgresql.Driver</DataSourceInfo>
+    <ProviderName>Mondrian</ProviderName>
+    <ProviderType>MDP</ProviderType>
+    <AuthenticationMode>Unauthenticated</AuthenticationMode>
+    <Catalogs>
+      <Catalog name="Default">
+        <Definition>file:///usr/local/tomcat/webapps/mondrian/WEB-INF/classes/schemas/default.xml</Definition>
+      </Catalog>
+    </Catalogs>
+  </DataSource>
+</DataSources>

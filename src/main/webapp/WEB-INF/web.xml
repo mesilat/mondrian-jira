@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+  <servlet>
+    <servlet-name>MondrianXmlaServlet</servlet-name>
+    <description>
+      MondrianXmlaServlet.
+      Provides a XML/A (XML for Analysis) interface to the Mondrian (R)OLAP engine.
+    </description>
+    <servlet-class>mondrian.xmla.impl.DynamicDatasourceXmlaServlet</servlet-class>
+    <init-param>
+      <param-name>DataSourcesConfig</param-name>
+      <param-value>file:///usr/local/tomcat/webapps/mondrian/WEB-INF/classes/datasources.xml</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MondrianXmlaServlet</servlet-name>
+    <url-pattern>/xmla</url-pattern>
+  </servlet-mapping>
+  <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>MondrianXmlaServlet</web-resource-name>
+      <description/>
+      <url-pattern>/xmla</url-pattern>
+      <url-pattern>/xmla/*</url-pattern>
+    </web-resource-collection>
+    <auth-constraint>
+      <role-name>xmla_user</role-name>
+    </auth-constraint>
+    <user-data-constraint>
+      <transport-guarantee>NONE</transport-guarantee>
+    </user-data-constraint>
+  </security-constraint>
+  <login-config>
+    <auth-method>BASIC</auth-method>
+    <realm-name>xmla</realm-name>
+  </login-config>
+</web-app>

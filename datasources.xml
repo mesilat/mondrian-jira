@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<DataSources>
+  <DataSource>
+    <DataSourceName>Provider=Mondrian;DataSource=Jira;</DataSourceName>
+    <DataSourceDescription>JIRA Worklog</DataSourceDescription>
+    <URL>http://127.0.0.1:8888/mondrian/xmla</URL>
+    {{#MSSQL_URL}}
+    <DataSourceInfo>Provider=mondrian;Jdbc={{MSSQL_URL}};JdbcUser={{MSSQL_USER}};JdbcPassword={{MSSQL_PASSWORD}};JdbcDrivers=com.microsoft.sqlserver.jdbc.SQLServerDriver</DataSourceInfo>
+    {{/MSSQL_URL}}
+    {{#MYSQL_URL}}
+    <DataSourceInfo>Provider=mondrian;Jdbc={{MYSQL_URL}};JdbcUser={{MYSQL_USER}};JdbcPassword={{MYSQL_PASSWORD}};JdbcDrivers=com.mysql.jdbc.Driver</DataSourceInfo>
+    {{/MYSQL_URL}}
+    {{#POSTGRES_URL}}
+    <DataSourceInfo>Provider=mondrian;Jdbc={{POSTGRES_URL}};JdbcUser={{POSTGRES_USER}};JdbcPassword={{POSTGRES_PASSWORD}};JdbcDrivers=org.postgresql.Driver</DataSourceInfo>
+    {{/POSTGRES_URL}}
+    {{#ORACLE_URL}}
+    <DataSourceInfo>Provider=mondrian;Jdbc={{ORACLE_URL}};JdbcUser={{ORACLE_USER}};JdbcPassword={{ORACLE_PASSWORD}};JdbcDrivers=oracle.jdbc.OracleDriver</DataSourceInfo>
+    {{/ORACLE_URL}}
+    <ProviderName>Mondrian</ProviderName>
+    <ProviderType>MDP</ProviderType>
+    <AuthenticationMode>Unauthenticated</AuthenticationMode>
+    <Catalogs>
+      <Catalog name="Default">
+        <Definition>file:///usr/local/tomcat/webapps/mondrian/WEB-INF/classes/schemas/default.xml</Definition>
+      </Catalog>
+    </Catalogs>
+  </DataSource>
+</DataSources>
