@@ -8,7 +8,7 @@ mvn package
 docker build -t mondrian-jira .
 ```
 
-To run:
+Or you can use a public image:
 
 ```
 docker run -p 8080:8080 \
@@ -19,7 +19,7 @@ docker run -p 8080:8080 \
 -e "POSTGRES_PASSWORD=<postgres password>" \
 -v "$(pwd)/webapps:/usr/local/tomcat/webapps" \
 -v "$(pwd)/logs:/usr/local/tomcat/logs" \
-mondrian-jira
+mesilat/mondrian-jira
 ```
 
 To debug:
@@ -34,7 +34,7 @@ docker run -p 8080:8080 -p 5000:5000 \
 -e "JAVA_OPTS=-agentlib:jdwp=transport=dt_socket,address=*:5000,server=y,suspend=n" \
 -v "$(pwd)/webapps:/usr/local/tomcat/webapps" \
 -v "$(pwd)/logs:/usr/local/tomcat/logs" \
-mondrian-jira
+mesilat/mondrian-jira
 ```
 
 Using with RDBMS other than PostgreSQL:
@@ -55,7 +55,7 @@ docker run -p 8080:8080 \
 -v "$(pwd)/webapps:/usr/local/tomcat/webapps" \
 -v "$(pwd)/logs:/usr/local/tomcat/logs" \
 -v "$(pwd)/mssql-jdbc-7.2.1.jre8.jar:/usr/local/tomcat/lib/mssql-jdbc.jar:ro" \
-mondrian-jira
+mesilat/mondrian-jira
 ```
 
 ## MySQL
@@ -73,7 +73,7 @@ docker run -p 8080:8080 \
 -v "$(pwd)/webapps:/usr/local/tomcat/webapps" \
 -v "$(pwd)/logs:/usr/local/tomcat/logs" \
 -v "$(pwd)/mysql-connector-java-8.0.22.jar:/usr/local/tomcat/lib/mysql-connector.jar:ro" \
-mondrian-jira
+mesilat/mondrian-jira
 ```
 
 ## Oracle
@@ -91,5 +91,5 @@ docker run -p 8080:8080 \
 -v "$(pwd)/webapps:/usr/local/tomcat/webapps" \
 -v "$(pwd)/logs:/usr/local/tomcat/logs" \
 -v "$(pwd)/ojdbc8.jar:/usr/local/tomcat/lib/ojdbc8.jar:ro" \
-mondrian-jira
+mesilat/mondrian-jira
 ```
