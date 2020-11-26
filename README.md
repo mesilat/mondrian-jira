@@ -8,7 +8,7 @@ mvn package
 docker build -t mondrian-jira .
 ```
 
-Or you can use a public image:
+Or you can use public image:
 
 ```
 docker run -p 8080:8080 \
@@ -93,3 +93,24 @@ docker run -p 8080:8080 \
 -v "$(pwd)/ojdbc8.jar:/usr/local/tomcat/lib/ojdbc8.jar:ro" \
 mesilat/mondrian-jira
 ```
+
+## Using without Docker
+
+To use this application with a standalone Tomcat:
+
+- Install Apache Tomcat 9 or later
+- Download JDBC driver for your JIRA database and save it to `${TOMCAT_HOME}/lib` directory
+- Edit the `${TOMCAT_HOME}/lib/tomcat-users.xml` file and add some users with `xmla_user` role; these are the credentials you use to connect to your Mondrian server
+- Deploy the `mondrian.war` application
+- Edit Mondrian schema file at `${TOMCAT_HOME}/webapps/mondrian/WEB-INF/classes/schemas/default.xml` (or alternatively you may download one from Confluence Custom Fields plugin for JIRA administration page as described in the [plugin documentation](https://www.mesilat.com/confluence-fields.html))
+- Edit `${TOMCAT_HOME}/webapps/mondrian/WEB-INF/classes/datasources.xml` and update the `DataSourceInfo` property to match your JIRA database connection settings
+- Edit `${TOMCAT_HOME}/webapps/mondrian/WEB-INF/classes/mondrian.properties` if required. For details please refer to [Mondrian documentation](https://mondrian.pentaho.com/documentation/configuration.php)
+
+## Using with MS Excel
+
+You can use this application with MS Excel for Windows and [XMLA Connect](https://sourceforge.net/projects/xmlaconnect/). For details please refer to the [plugin documentation](https://www.mesilat.com/confluence-fields.html).
+
+## Troubleshooting
+
+Logs could be found in file `${TOMCAT_HOME}/logs/xmla.log`. To manage logs please edit the configuration file `${TOMCAT_HOME}/webapps/mondrian/WEB-INF/classes/log4j.properties`.
+
